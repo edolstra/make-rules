@@ -33,6 +33,7 @@ bindir ?= $(prefix)/bin
 libexecdir ?= $(prefix)/libexec
 datadir ?= $(prefix)/share
 jardir ?= $(datadir)/java
+includedir ?= $(prefix)/include
 localstatedir ?= $(prefix)/var
 sysconfdir ?= $(prefix)/etc
 mandir ?= $(prefix)/share/man
