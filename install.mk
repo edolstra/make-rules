@@ -5,7 +5,7 @@ define create-dir
   ifndef $$(_i)_SEEN
     $$(_i)_SEEN = 1
     $$(_i):
-	$$(trace-mkdir) install -d "$$@"
+	$$(trace-mkdir) mkdir -p "$$@"
   endif
 endef
 
