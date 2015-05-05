@@ -15,8 +15,8 @@ define build-jar
 	@mkdir -p $$($(1)_TMPDIR)
 	$$(trace-javac) javac $(GLOBAL_JAVACFLAGS) $$($(1)_JAVACFLAGS) -d $$($(1)_TMPDIR) \
 	  $$(foreach fn, $$($(1)_SOURCES), '$$(fn)') \
-	  -cp "$$(subst $$(space),,$$(foreach jar,$$($(1)_JARS),$$($$(jar)_PATH):))$$$$CLASSPATH"
-	@echo -e '$$(subst $$(newline),\n,$$($(1)_MANIFEST))' > $$($(1)_PATH).manifest
+	  -cp "$$(subst $$(space),,$$(foreach jar,$$($(1)_JARS),$$($$(jar)_PATH):))$$(subst $$(space),,$$(foreach entry,$$(GLOBAL_CLASSPATH),$$(entry):))$$$$CLASSPATH"
+	@printf '$$(subst $$(newline),\n,$$($(1)_MANIFEST))' > $$($(1)_PATH).manifest
 	$$(trace-jar) jar cfm $$($(1)_PATH) $$($(1)_PATH).manifest -C $$($(1)_TMPDIR) .
 	@rm $$($(1)_PATH).manifest
 	@rm -rf $$($(1)_TMPDIR)
